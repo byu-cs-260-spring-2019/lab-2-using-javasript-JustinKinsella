@@ -36,14 +36,26 @@ window.onload = function() {
             console.log(err);
         }
 
+    });
 
-       // const response = await fetch(url);
-       // console.log("response: ", response);
-        //  .then(function(response) {
-        //    return response.json();
-        //  }).then(function(json) {	
-        //   console.log(json);
-        //  });
+    document.getElementById("forecastSubmit").addEventListener("click", async function(event) {
+        event.preventDefault();
+        const value = document.getElementById("forecastInput").value;
+        if (value === "")
+        
+        return;
+        console.log(value);
+
+        const url2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ", US&units=imperial" 
+        + "&APPID=940e865a98c5a4db87d21e47ac1afe68";
+        try {
+            const response = await fetch(url2);
+            const json = await response.json();
+            console.log("json: ", json);
+        }catch(err) {
+            console.log(err);
+        }
+
     });
 }
 
