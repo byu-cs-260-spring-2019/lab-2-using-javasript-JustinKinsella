@@ -36,6 +36,8 @@ window.onload = function() {
             console.log(err);
         }
 
+        //I may be able to keep one Box and have it display both the current weather and forecast. 
+
     });
 
     document.getElementById("forecastSubmit").addEventListener("click", async function(event) {
