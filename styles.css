@@ -1,22 +1,12 @@
 #footer {
 
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    height: 20px;
     background: #5a5959;
     color: #f3f1f1;
     width: 100%;
     padding-left: 7%;
     padding-right: 7%;
-}
-#footer .p{
-
-    position: absolute;
-    bottom: 0;
-    height: 20px;
-    background: #5a5959;
-    color: #f3f1f1;
-    width: 100%;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

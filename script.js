@@ -11,9 +11,9 @@ window.onload = function() {
         + "&APPID=940e865a98c5a4db87d21e47ac1afe68";
         try {
          // trying to do something that might fail;
-            const response = await fetch(url);
+            response = await fetch(url);
          //   console.log("response: ", response);
-            const json = await response.json();
+            json = await response.json();
             console.log("json: ", json);
             
          
@@ -32,27 +32,11 @@ window.onload = function() {
             results += "</p>";
             document.getElementById("weatherResults").innerHTML = results;
 
-        }catch(err) {
-            console.log(err);
-        }
-
-        //I may be able to keep one Box and have it display both the current weather and forecast. 
-
-    });
-
-    document.getElementById("forecastSubmit").addEventListener("click", async function(event) {
-        event.preventDefault();
-        const value = document.getElementById("forecastInput").value;
-        if (value === "")
+            const url2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ", US&units=imperial" 
+               + "&APPID=940e865a98c5a4db87d21e47ac1afe68";
         
-        return;
-        console.log(value);
-
-        const url2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ", US&units=imperial" 
-        + "&APPID=940e865a98c5a4db87d21e47ac1afe68";
-        try {
-            const response = await fetch(url2);
-            const json = await response.json();
+            response = await fetch(url2);
+            json = await response.json();
             console.log("json: ", json);
 
             let forecast = "";
@@ -61,11 +45,42 @@ window.onload = function() {
                 forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
                 forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
             }
-            document.getElementById("forecastResults").innerHTML = forecast;
+            document.getElementById("weatherResults").innerHTML += forecast;
+
         }catch(err) {
             console.log(err);
         }
 
+        //I may be able to keep one Box and have it display both the current weather and forecast. 
+
     });
+
+    // document.getElementById("forecastSubmit").addEventListener("click", async function(event) {
+    //     event.preventDefault();
+    //     const value = document.getElementById("forecastInput").value;
+    //     if (value === "")
+        
+    //     return;
+    //     console.log(value);
+
+    //     const url2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ", US&units=imperial" 
+    //     + "&APPID=940e865a98c5a4db87d21e47ac1afe68";
+    //     try {
+    //         const response = await fetch(url2);
+    //         const json = await response.json();
+    //         console.log("json: ", json);
+
+    //         let forecast = "";
+    //         for (let i=0; i < json.list.length; i++) {
+    //             forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
+    //             forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
+    //             forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>'
+    //         }
+    //         document.getElementById("forecastResults").innerHTML = forecast;
+    //     }catch(err) {
+    //         console.log(err);
+    //     }
+
+    // });
 }
 
