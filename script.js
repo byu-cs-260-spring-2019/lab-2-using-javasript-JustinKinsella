@@ -116,6 +116,9 @@ window.onload = function() {
                 i++;
             }
             document.getElementById("day5").innerHTML += forecast5;
+            
+            document.getElementById("day1").style.display = "block";
+            document.getElementById("day2").style.direction = "inline";
 
 
         }catch(err) {
